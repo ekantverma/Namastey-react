@@ -5,7 +5,8 @@
   "scripts": {
     "test": "jest",
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html",
+    "watch-test": "jest --watch"
   },
   "keywords": [
     "ReactJs"
@@ -17,7 +18,7 @@
     "@babel/preset-env": "^7.25.4",
     "@babel/preset-react": "^7.24.7",
     "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.0.0",
+    "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/react": "^16.0.0",
     "autoprefixer": "^10.4.20",
     "babel-jest": "^29.7.0",
@@ -37,5 +38,3 @@
     "react-router-dom": "^6.24.1"
   }
 }
-
-

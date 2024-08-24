@@ -2,9 +2,13 @@ import { CDN_URL } from "../utils/constants";
 
 const RestaurantCard = (props) => {
   const { resData } = props;
+
+  if (!resData || !resData.info) {
+    return <div>Data not available</div>;
+  }
+
   const { cloudinaryImageId, name, avgRating, sla, cuisines, aggregatedDiscountInfoV3 } = resData?.info;
-
-
+  
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden w-80 hover:shadow-lg transition-shadow duration-300 relative mx-3 my-2">
       <div className="relative">
