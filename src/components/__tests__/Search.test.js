@@ -14,12 +14,14 @@ global.fetch = jest.fn(() => {
 });
 
 //Integrity Testing
-it("Should render the body component with search button", async () => {
+it("Should search resList for Item input", async () => {
    await act(async () => render(
    <BrowserRouter>
         <Body/>
     </BrowserRouter>
    ));
+
+   const cardsBeforeSearch = screen.getAllByTestId("resCard");
 
    const searchBtn = screen.getByRole("button", {name: "Search"});
 
@@ -27,8 +29,8 @@ it("Should render the body component with search button", async () => {
    fireEvent.change(searchInput, { target: {value: "burger"} });
    fireEvent.click(searchBtn);
 
-   // screen should load 4 cards
-   const cards = screen.getAllByTestId("resCard");
+//    // screen should load 4 cards
+   const cardsAfterSearch = screen.getAllByTestId("resCard");
 
-   expect(cards.length).toBe(2);
-})
+   expect(cardsAfterSearch.length).toBe(2);
+});
