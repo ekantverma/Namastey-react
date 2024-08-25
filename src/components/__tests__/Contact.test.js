@@ -15,6 +15,23 @@ test("Shoult load contact us component", () => {
 
 // for many test cases we can write like 
 describe('Contact us page test cases', () => {
+
+    // beforeAll(() => {
+    //     console.log("Before all tests");
+    // })
+
+    // beforeEach(() => {
+    //     console.log("Before each test");
+    // })
+
+    // afterAll(() => {
+    //     console.log("After all tests");
+    // })
+
+    // afterEach(() => {
+    //     console.log("After each test");
+    // })
+
     test("Shoult load 2 input us component", () => {
         render(<Contact />);
         const inputBoxes = screen.getAllByRole("textbox");

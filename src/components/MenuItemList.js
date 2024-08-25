@@ -13,8 +13,8 @@ const MenuItemList = ({items}) => {
     }
 
     return (
-        <div className="">
-            {items.map(item => <div key={item.card.info.id}
+        <div>
+            {items.map (item => <div data-testid = "foodItems" key={item.card.info.id}
             className="flex justify-between p-2 m-2 border-gray-200 border-b-2 text-left">
             {/* <div className="w-9/12">
             <div className="font-bold">
@@ -59,7 +59,6 @@ const MenuItemList = ({items}) => {
 
 
             </div>
-
             )}
         </div>
     )
