@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus.js";
 import UserContext from "../utils/userContext.js";
 import { useSelector } from "react-redux";
+import Logo from "../assets/Foodieweb_logo.png"
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
@@ -19,10 +20,10 @@ const Header = () => {
 
 
   return (
-    <header className="flex justify-between items-center p-4 bg-white shadow-md w-full">
+    <header className="flex justify-between items-center p-4 bg-white shadow-md w-full h-[65px]">
       <div className="logo-container">
         <Link to="/">
-          <img className="h-8 w-auto" src={LOGO_URL} alt="Logo" />
+          <img className="h-11 w-auto" src={Logo} alt="Logo" />
         </Link>
       </div>
 
