@@ -29,14 +29,20 @@ const RestaurantMenu = () => {
         console.log(categories);
 
     return (
-        <div className="text-center">
-            <div className="font-bold my-6 text-2xl">
-                <h1>{info.name}</h1>
-            </div>
-            <span className="font-bold text-lg">
-                <h2>{info.avgRating + " "}({info.totalRatingsString + " ratings"})</h2> 
-                <h2>{info.costForTwoMessage}</h2>
-            </span>
+        <div className="">
+        <div className="text-center font-bold mt-8 mb-0 text-2xl text-black text-left pr-[605px]">
+        <h1 className="text-black">{info.name}</h1>
+        </div>
+        <div className="text-center p-4 bg-white border border-8 shadow-lg rounded-2xl w-3/5 mx-auto mb-10 mt-5">
+        {/* <div className="font-bold my-4 text-2xl text-gray-800">
+        <h1>{info.name}</h1>
+        </div> */}
+        <div className="font-bold text-lg text-gray-600">
+        <h2 className="text-yellow-500">{info.avgRating} <span className="text-sm text-gray-500">({info.totalRatingsString} ratings)</span></h2>
+        <h2 className="mt-2 text-gray-500">{info.costForTwoMessage}</h2>
+        </div>
+        </div>
+        <div>
         {categories.map((category, index) => (
         <RestaurantCategory 
         key={category?.card?.card?.id} 
@@ -47,6 +53,7 @@ const RestaurantMenu = () => {
         index={index}
     />
     ))}
+    </div>
     </div>
     );
 };

@@ -35,7 +35,7 @@ const MenuItemList = ({items}) => {
                 </button>
             </div>
             </div> */}
-    <div className="bg-white shadow-lg rounded-lg flex p-4 max-w-xl mx-auto mb-6 transform transition duration-100 hover:scale-105">
+    <div className="bg-white shadow-lg rounded-lg flex p-4 max-w-2xl mx-auto mb-6 transform transition duration-100 hover:scale-105 h-auto">
     <div className="w-9/12 pr-4">
     <div className="font-bold text-lg mb-2">
       <div>{item.card.info.name}</div>
@@ -44,7 +44,7 @@ const MenuItemList = ({items}) => {
     <div className="text-gray-700 text-[16px] mb-4">{item.card.info.description}</div>
   </div>
   <div className="w-3/12 relative">
-    <img src={CDN_URL + item.card.info.imageId} className="rounded-xl w-full object-cover" />
+    <img src={CDN_URL + item.card.info.imageId} className="rounded-xl w-full object-cover h-44" />
     <button className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-green-500 text-white py-1 px-4 rounded-lg shadow-md hover:bg-green-600 transition duration-300"
             onClick={() => handleAddItem(item)}
     >

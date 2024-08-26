@@ -8,7 +8,7 @@ const RestaurantCategory = ({ info, showItems, setShowIndex, index}) => {
     
     return (
         <div>
-            <div className="w-6/12 mx-auto my-4 bg-gray-50 shadow-lg p-4">
+            <div className="w-3/5 mx-auto my-4 bg-gray-50 shadow-lg p-4">
                 <div className="flex justify-between cursor-pointer" onClick={handleClick}>
                     {/* Accordion Header */}
                     <span className="font-bold text-lg">{info.title} ({info.itemCards.length})</span>
