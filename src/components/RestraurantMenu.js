@@ -27,8 +27,7 @@ const RestaurantMenu = () => {
         groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c) => c.card?.card?.["@type"] == "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
 
         console.log(categories);
-        
-        const formattedString = info.sla.slaString.replace(/([a-z])([A-Z])/g, '$1, $2');
+
 
     return (
         <div className="">
@@ -42,11 +41,14 @@ const RestaurantMenu = () => {
         <div className="font-bold text-lg text-gray-600 text-left">
         <h2 className="text-green-600">✪ <span className="text-black"> {info.avgRating}</span> <span className="text-black">({info.totalRatingsString}) •&nbsp;{info.costForTwoMessage}</span></h2>
         <h5 className="text-sm underline text-orange-500">{info.cuisines.join(", ")}</h5>
-        <h6 className="text-sm mt-2 text-black"><span className="text-gray-400 text-2lg">•</span> &nbsp;Outlet &nbsp;&nbsp; {info.areaName} <span className="text-orange-400">▼</span></h6>
+        <h6 className="text-sm mt-2 text-black"><span className="text-gray-400 text-2lg">•</span> &nbsp;Outlet &nbsp;&nbsp; {info.areaName} <span className="text-red-500">▼</span></h6>
         <h6 className="text-sm mt-3 mb-6 text-black"><span className="text-gray-400 text-2lg">•</span> {info.sla.slaString.toLowerCase()}</h6>
         <hr></hr>
-        <h3 className="text-sm mt-3">{info.sla.lastMileTravelString} | ₹44 Delivery fee will apply</h3>
+        <h3 className="text-sm mt-3">🚴🏻‍♀️&nbsp;{info.sla.lastMileTravelString} | ₹44 Delivery fee will apply</h3>
         </div>
+        </div>
+        <div>
+            <h3 className="text-center mb-8">﹄ MENU ﹃</h3>
         </div>
         <div>
         {categories.map((category, index) => (
