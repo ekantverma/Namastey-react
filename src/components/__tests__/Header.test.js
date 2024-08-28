@@ -67,3 +67,20 @@ it("Should Change Login button to Logout on click", () => {
 
     expect(logoutBUtton).toBeInTheDocument();
 });
+
+// it("Should Change the logout button to logout", () => {
+//     render(
+//         <BrowserRouter>
+//             <Provider store={appStrore}>
+//                 <Header/>
+//             </Provider>
+//         </BrowserRouter>
+//     );
+
+//     const logoutButton = screen.getByRole("button", {name : "Logout"});
+//     fireEvent.click(logoutButton);
+//     const loginButton = screen.getByRole("button", {name: "Login"});
+
+//     expect(loginButton).toBeInTheDocument();
+
+// })

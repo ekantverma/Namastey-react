@@ -51,7 +51,7 @@ const Cart = () => {
                     Clear Cart
                 </button>
                 {cartItems.length === 0 ? (
-                    <h1>Your Cart is empty, Add items to your cart</h1>
+                    <h1>Your Cart is empty, Please add items to your cart</h1>
                 ) : (
                     <MenuItemList items={cartItems} isCartPage={true} />
                 )}

@@ -99,7 +99,7 @@ const MenuItemList = ({ items, isCartPage }) => {
                         <img src={CDN_URL + item.card.info.imageId} className="rounded-xl w-full object-cover h-44" alt={item.card.info.name} />
                         {!isCartPage ? (
                             <button
-                                className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-green-500 text-white py-1 px-4 rounded-lg shadow-md hover:bg-green-600 transition duration-300"
+                                className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-green-500 text-white py-1 px-4 rounded-lg shadow-md hover:bg-white hover:text-green-500 transition duration-300"
                                 onClick={() => handleAddItem(item)}
                             >
                                 Add
