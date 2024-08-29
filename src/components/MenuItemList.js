@@ -80,6 +80,7 @@ const MenuItemList = ({ items, isCartPage }) => {
         return cartItems.some(item => item.card.info.id === itemId);
     };
 
+    
     return (
         <div>
             {items.map(item => (
