@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import ReactDOM from 'react-dom';
 import ReactDOM from 'react-dom/client';
 import Header from './components/Header';
 import Body from './components/Body';
@@ -14,6 +13,8 @@ import { Provider } from 'react-redux';
 import appStore from './utils/appStore';
 import Cart from "./components/Cart";
 import Login from "./components/Login"; 
+import Footer from "./components/Footer";
+import Shimmer from './components/Shimmer';
 
 const AppLayout = () => {
   const [userInfo, setUserInfo] = useState(null);
@@ -43,6 +44,7 @@ const AppLayout = () => {
         <div className="app">
           <Header />
           <Outlet context={{ onLogin: handleLogin }} /> {/* Pass handleLogin as context */}
+          <Footer /> {/* Add Footer here */}
         </div>
       </UserContext.Provider>
     </Provider>

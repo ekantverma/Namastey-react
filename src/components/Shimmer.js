@@ -33,6 +33,38 @@ const Shimmer = () => {
                 <div className="shimmer-image">
                 </div>
             </div>
+            <div className="shimmer-card">
+                <div className="shimmer-image">
+                </div>
+            </div>
+            <div className="shimmer-card">
+                <div className="shimmer-image">
+                </div>
+            </div>
+            <div className="shimmer-card">
+                <div className="shimmer-image">
+                </div>
+            </div>
+            <div className="shimmer-card">
+                <div className="shimmer-image">
+                </div>
+            </div>
+            <div className="shimmer-card">
+                <div className="shimmer-image">
+                </div>
+            </div>
+            <div className="shimmer-card">
+                <div className="shimmer-image">
+                </div>
+            </div>
+            <div className="shimmer-card">
+                <div className="shimmer-image">
+                </div>
+            </div>
+            <div className="shimmer-card">
+                <div className="shimmer-image">
+                </div>
+            </div>
         </div>
     )
 }

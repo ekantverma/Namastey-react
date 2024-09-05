@@ -86,7 +86,7 @@ const Body = () => {
 
       <div className="cards-container">
         <div className="restro-names ml-4 md:ml-32 font-bold text-lg md:text-2xl">
-          <h2>Restaurants with online food delivery in Delhi</h2>
+        <h2>Restaurants with online food delivery in Delhi</h2>
         </div>
         <div className="res-container flex flex-wrap justify-center p-3">
           {filteredRestro.map((restaurant) => (
