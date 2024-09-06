@@ -33,9 +33,9 @@ const Footer = () => {
             <div>
               <h3 className="text-xl font-semibold text-white mb-2">Follow Us</h3>
               <ul className="flex space-x-4">
-                <li><a href="#" className="hover:text-white"><i className="fab fa-facebook"></i> Facebook</a></li>
-                <li><a href="#" className="hover:text-white"><i className="fab fa-twitter"></i> Twitter</a></li>
-                <li><a href="#" className="hover:text-white"><i className="fab fa-linkedin"></i> LinkedIn</a></li>
+                <li><a href="https://www.instagram.com/ekantverma_13/" className="hover:text-white"><i className="fab fa-facebook"></i> Instagram</a></li>
+                <li><a href="https://x.com/EkantVerma13" className="hover:text-white"><i className="fab fa-twitter"></i> Twitter</a></li>
+                <li><a href="https://www.linkedin.com/in/ekantverma/" className="hover:text-white"><i className="fab fa-linkedin"></i> LinkedIn</a></li>
               </ul>
             </div>
           </div>
