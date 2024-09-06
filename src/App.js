@@ -85,7 +85,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <Login />, // Pass handleLogin function here
+        element: <Login />,
       },
     ],
     errorElement: <Error/>
