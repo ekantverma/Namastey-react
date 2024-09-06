@@ -44,7 +44,7 @@ const AppLayout = () => {
         <div className="app">
           <Header />
           <Outlet context={{ onLogin: handleLogin }} /> {/* Pass handleLogin as context */}
-          <Footer /> {/* Add Footer here */}
+          <Footer />
         </div>
       </UserContext.Provider>
     </Provider>

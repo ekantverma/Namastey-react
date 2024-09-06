@@ -90,7 +90,7 @@ const MenuItemList = ({ items = [], isCartPage }) => {
                 <div
                     data-testid="foodItems"
                     key={item.card.info.id}
-                    className="bg-white shadow-lg rounded-lg flex p-4 max-w-2xl mx-auto mb-6 transform transition duration-100 hover:scale-105 h-auto"
+                    className="bg-white shadow-lg rounded-lg flex p-4 max-w-2xl mx-auto mb-6 transform transition duration-100 h-auto"
                 >
                     <div className="w-9/12 pr-4">
                         <div className="font-bold text-lg mb-2">
