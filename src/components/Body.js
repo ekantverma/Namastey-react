@@ -59,8 +59,8 @@ const Body = () => {
   return listOfRestaurant.length === 0 ? <Shimmer/> : (
     <div className="body">
       <div className="my-4 flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-4">
-        <div className="flex items-center">
-          <input
+        {/* <div className="flex items-center"> */}
+          {/* <input
             type="text"
             data-testid="searchInput"
             className="border border-gray-300 rounded-l-lg p-2 focus:outline-none focus:ring-2 focus:ring-green-500 bg-white shadow-md w-64"
@@ -68,8 +68,8 @@ const Body = () => {
             value={searchText}
             onKeyPress={handleEnterKeyPress}
             onChange={(e) => setSearchText(e.target.value)}
-          />
-          <button
+          /> */}
+          {/* <button
             onClick={handleSearch}
             className="bg-green-500 text-white rounded-r-lg px-4 py-2 hover:bg-green-600 transition-colors duration-200 shadow-md"
           >
@@ -82,7 +82,7 @@ const Body = () => {
           onClick={FilterTopRes}
         >
           Top Rated Restaurants
-        </button>
+        </button> */}
       </div>
 
       <div className="cards-container">
@@ -101,4 +101,4 @@ const Body = () => {
   );
 };
 
-export default Body;
+export default Body; 

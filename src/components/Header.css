@@ -1,0 +1,99 @@
+.header-container {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 0 1rem;
+  }
+  
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* Adjust based on your layout */
+    padding: 1rem 0;
+  }
+  
+  .logo {
+    height: 2.75rem; /* Adjust based on your logo size */
+  }
+  
+  .mobile-menu-button {
+    display: none;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #f97316; /* Adjust based on your theme */
+  }
+  
+  .nav-items {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .nav-list {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: #374151; /* Adjust based on your theme */
+    transition: color 0.3s;
+  }
+  
+  .nav-link:hover {
+    color: #f97316; /* Adjust based on your theme */
+  }
+  
+  .login-button {
+    background-color: #f97316; /* Adjust based on your theme */
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .login-button:hover {
+    background-color: #ea580c; /* Darker shade for hover effect */
+  }
+  
+  @media (max-width: 767px) {
+    .mobile-menu-button {
+      display: block;
+    }
+  
+    .nav-items {
+      display: none;
+      align-items: center;
+      flex-direction: column;
+      position: absolute;
+      top: 65px; /* Adjust based on your header height */
+      left: 0;
+      right: 0;
+      background-color: white;
+      border-bottom: 1px solid #ddd;
+      z-index: 1000;
+    }
+  
+    .nav-items.open {
+      display: flex;
+    }
+  
+    .nav-list {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }

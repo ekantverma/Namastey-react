@@ -15,6 +15,7 @@ import Cart from "./components/Cart";
 import Login from "./components/Login"; 
 import Footer from "./components/Footer";
 import Shimmer from './components/Shimmer';
+import Search from "./components/Search";
 
 const AppLayout = () => {
   const [userInfo, setUserInfo] = useState(null);
@@ -87,6 +88,10 @@ const appRouter = createBrowserRouter([
         path: "/login",
         element: <Login />,
       },
+      {
+        path: "/search",
+        element:<Search/>
+      }
     ],
     errorElement: <Error/>
   }
