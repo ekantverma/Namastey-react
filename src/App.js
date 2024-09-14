@@ -17,6 +17,7 @@ import Footer from "./components/Footer";
 import Shimmer from './components/Shimmer';
 import Search from "./components/Search";
 
+
 const AppLayout = () => {
   const [userInfo, setUserInfo] = useState(null);
   const [showLogin, setShowLogin] = useState(false);

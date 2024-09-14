@@ -1,46 +1,29 @@
-// import { createSlice } from "@reduxjs/toolkit";
-
-// const cartSlice = createSlice({
-//     name: 'cart',
-//     initialState: {
-//         items: [],
-//     },
-//     reducers : {
-//         addItem : (state, action) => {
-//             state.items.push(action.payload);
-//         }, 
-//         removeItem : (state) => {
-//             state.items.pop();
-//         },
-//         clearCart : (state) => {
-//             // state.items.length = 0;
-//             return {items : []};
-//         },
-//     },
-// });
-
-// export const {addItem, removeItem, clearCart} = cartSlice.actions;
-
-// export default cartSlice.reducer;
-
-
 import { createSlice } from "@reduxjs/toolkit";
 
 const cartSlice = createSlice({
     name: 'cart',
     initialState: {
-        items: [],
+        items: [],  // Items will now include a quantity property
     },
     reducers: {
         addItem: (state, action) => {
-            state.items.push(action.payload);
-        },
-        removeItem: (state, action) => {
-            const itemIndex = state.items.findIndex(item => item.card.info.id === action.payload.card.info.id);
-            if (itemIndex > -1) {
-                state.items.splice(itemIndex, 1);
+            const { id, quantity, price } = action.payload;
+            const existingItem = state.items.find(item => item.card.info.id === id);
+            
+            if (existingItem) {
+              existingItem.quantity = quantity; // Update quantity
+              existingItem.totalPrice = price * quantity; // Update total price
+            } else {
+              state.items.push({
+                ...action.payload,
+                totalPrice: price * quantity // Set total price for new item
+              });
             }
-        },
+          },
+          removeItem: (state, action) => {
+            const { id } = action.payload;
+            state.items = state.items.filter(item => item.card.info.id !== id);
+          },
         clearCart: (state) => {
             state.items = [];
         },
