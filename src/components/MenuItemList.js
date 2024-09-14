@@ -2,14 +2,14 @@ import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CDN_URL } from '../utils/constants';
 import { addItem, removeItem } from '../utils/cartSlice';
-import ShimmerMenuItem from './ShimmerMenuItem'; // Import the shimmer component
+import ShimmerMenuItem from './ShimmerMenuItem';
 
 const MenuItemList = ({ items = [], isCartPage, isLoading }) => {
     const dispatch = useDispatch();
     const cartItems = useSelector((store) => store.cart.items);
 
     const handleAddItem = useCallback((item) => {
-        dispatch(addItem(item));
+        dispatch(addItem({ ...item, quantity: 1 })); // Ensure quantity is added
     }, [dispatch]);
 
     const handleRemoveItem = useCallback((item) => {
@@ -56,25 +56,25 @@ const MenuItemList = ({ items = [], isCartPage, isLoading }) => {
                             className="rounded-xl w-full object-cover h-44" 
                             alt={item.card.info.name} 
                         />
-                        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex items-center space-x-2 bg-white rounded-md px-2 py-1 shadow-lg">
+                        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex items-center space-x-2">
                             {!isItemInCart(item.card.info.id) ? (
                                 <button
-                                    className="bg-green-500 text-white py-1 px-4 rounded-lg shadow-md hover:bg-green-600 transition duration-300"
+                                    className="bg-green-500 text-white py-1 px-4 rounded-lg shadow-md hover:bg-white hover:text-green-500 transition duration-300"
                                     onClick={() => handleAddItem(item)}
                                 >
                                     Add
                                 </button>
                             ) : (
-                                <div className="flex items-center space-x-2">
+                                <div className="flex items-center space-x-2 bg-white rounded-md px-2 py-1">
                                     <button
-                                        className="border border-gray-300 text-black font-bold text-md px-2 py-1 rounded-lg shadow-md hover:bg-gray-100 transition duration-300"
+                                        className="border-[1px] text-black font-bold text-md px-2 rounded-lg shadow-md hover:bg-red-600 transition duration-300"
                                         onClick={() => handleRemoveItem(item)}
                                     >
                                         -
                                     </button>
                                     <span className="text-gray-700 font-bold">{getItemCount(item.card.info.id)}</span>
                                     <button
-                                        className="border border-gray-300 text-black font-bold text-md px-2 py-1 rounded-lg shadow-md hover:bg-gray-100 transition duration-300"
+                                        className="border-[1px] text-black font-bold text-md px-2 rounded-lg shadow-md hover:bg-green-600 transition duration-300"
                                         onClick={() => handleAddItem(item)}
                                     >
                                         +

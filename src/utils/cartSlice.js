@@ -3,27 +3,31 @@ import { createSlice } from "@reduxjs/toolkit";
 const cartSlice = createSlice({
     name: 'cart',
     initialState: {
-        items: [],  // Items will now include a quantity property
+        items: [],
     },
     reducers: {
         addItem: (state, action) => {
-            const { id, quantity, price } = action.payload;
-            const existingItem = state.items.find(item => item.card.info.id === id);
-            
-            if (existingItem) {
-              existingItem.quantity = quantity; // Update quantity
-              existingItem.totalPrice = price * quantity; // Update total price
+            const itemIndex = state.items.findIndex(item => item.card.info.id === action.payload.card.info.id);
+            if (itemIndex > -1) {
+                // Item already in cart, increment the quantity
+                state.items[itemIndex].quantity += 1;
             } else {
-              state.items.push({
-                ...action.payload,
-                totalPrice: price * quantity // Set total price for new item
-              });
+                // Item not in cart, add it with quantity 1
+                state.items.push({ ...action.payload, quantity: 1 });
             }
-          },
-          removeItem: (state, action) => {
-            const { id } = action.payload;
-            state.items = state.items.filter(item => item.card.info.id !== id);
-          },
+        },
+        removeItem: (state, action) => {
+            const itemIndex = state.items.findIndex(item => item.card.info.id === action.payload.card.info.id);
+            if (itemIndex > -1) {
+                if (state.items[itemIndex].quantity > 1) {
+                    // If quantity is more than 1, decrement the quantity
+                    state.items[itemIndex].quantity -= 1;
+                } else {
+                    // Remove item if quantity is 1
+                    state.items.splice(itemIndex, 1);
+                }
+            }
+        },
         clearCart: (state) => {
             state.items = [];
         },
@@ -33,3 +37,5 @@ const cartSlice = createSlice({
 export const { addItem, removeItem, clearCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
+
+
