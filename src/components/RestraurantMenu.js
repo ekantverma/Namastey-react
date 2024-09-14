@@ -7,7 +7,7 @@ import RestaurantCategory from "./RestaurantCategory";
 const RestaurantMenu = () => {
     const { resId } = useParams();
     const resInfo = useRestaurantManu(resId);
-    const [showIndex, setShowIndex] = useState(null);
+    const [showIndex, setShowIndex] = useState(0); // Initialize to 0 to show the first category by default
 
     if (resInfo === null) return <Shimmer />;
 
