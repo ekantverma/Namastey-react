@@ -9,17 +9,36 @@ import Shimmer from './Shimmer';
 const Carousel = () => {
   const [listofTopRestro, setlistofTopRestro] = useState([]);
   const mainSliderRef = useRef(null); // Ref for the main slider
+  const [carouselTitle, setCarouselTitle] = useState("");
 
   // Fetch data when the component mounts
   useEffect(() => {
     const loadTopRestaurants = async () => {
-      const data = await fetchData();
-      if (data) {
-        setlistofTopRestro(data.data.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []);
+      try {
+        const data = await fetchData();
+        if (data) {
+          // Extract and set the list of top restaurants
+          const restaurants =
+            data.data.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
+          setlistofTopRestro(restaurants);
+  
+          // Extract and set the carousel title
+          const title = data.data.cards[1]?.card?.card?.header?.title; // Adjust based on JSON structure
+          if (title) {
+            setCarouselTitle(title);
+          } else {
+            setCarouselTitle("Top restaurant chains in Delhi"); // Fallback title
+          }
+        }
+      } catch (err) {
+        console.error("Failed to fetch data:", err);
+        setError("Failed to fetch data. Please try again later.");
       }
     };
+  
     loadTopRestaurants();
   }, []);
+  
 
   const mainSliderSettings = {
     dots: false,
@@ -50,7 +69,7 @@ const Carousel = () => {
   return listofTopRestro.length === 0 ? <Shimmer /> : (
     <div className="relative w-[80%] mx-auto mt-8 mb-4">
       <div className="flex items-center justify-between">
-        <h2 className="font-bold text-lg md:text-2xl">Top restaurant chains in Gurgaon</h2>
+        <h2 className="font-bold text-lg md:text-2xl">{carouselTitle}</h2>
         <div className="flex space-x-4">
           <button
             className="bg-gray-200 text-white p-2 rounded-3xl shadow-lg"
