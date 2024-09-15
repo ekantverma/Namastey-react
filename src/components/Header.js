@@ -376,7 +376,7 @@ const Header = () => {
           </Link>
           <li className="nav-item list-none">
             <button
-              className="location-button text-gray-500 font-semibold hover:underline"
+              className="location-button text-gray-700 font-semibold hover:underline"
               onClick={handleLocationClick}
             >
               {locationName}
