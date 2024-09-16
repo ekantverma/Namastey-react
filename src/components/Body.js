@@ -14,7 +14,7 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [restroLocationName, setRestroLocationName] = useState("")
+  const [restroLocationName, setRestroLocationName] = useState("");
 
   const onlineStatus = useOnlineStatus();
   const { loggedInUser, setUserInfo } = useContext(UserContext);
@@ -33,7 +33,9 @@ const Body = () => {
           if (titleCard && titleCard.title) {
             setRestroLocationName(titleCard.title);
           } else {
-            setRestroLocationName("Restaurants with online food delivery in Delhi");
+            setRestroLocationName(
+              "Restaurants with online food delivery in Delhi"
+            );
           }
         }
       } catch (err) {
@@ -71,10 +73,10 @@ const Body = () => {
       <h1>Looks like you are offline, Please check your internet Connection</h1>
     );
   }
-  
 
   return (
     <div className="body font-medium mt-3">
+    
       {/* Whats in your minds carousel */}
       {/* <CarouselMinds cardsData={filteredRestro} /> */}
       <CarouselMinds />
