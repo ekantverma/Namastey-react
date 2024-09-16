@@ -20,7 +20,6 @@ const CarouselMinds = ({ cardsData }) => {
           json.data.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info ||
             []
         );
-        console.log(json);
         setMindsTitle(json.data.cards[0]?.card?.card?.title);
       }
       const mindsHeader = json.data.cards[0]?.card?.card?.header?.title;
