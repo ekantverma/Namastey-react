@@ -11,6 +11,7 @@ const Carousel = () => {
   const [listofTopRestro, setlistofTopRestro] = useState([]);
   const mainSliderRef = useRef(null); // Ref for the main slider
   const [carouselTitle, setCarouselTitle] = useState("");
+  // const[locationName, setLocationName] = useState("Gurgaon", "Delhi");
 
   // Fetch data when the component mounts
   useEffect(() => {
@@ -73,6 +74,7 @@ const Carousel = () => {
     <div className="relative w-[80%] mx-auto mt-8 mb-4">
       <div className="flex items-center justify-between">
         <h2 className="font-bold text-lg md:text-2xl">{carouselTitle}</h2>
+        {/* <h2 className="font-bold text-lg md:text-2xl">Top restaurant chains in {locationName}</h2> */}
         <div className="flex space-x-4">
           <button
             className="bg-gray-200 text-white p-2 rounded-3xl shadow-lg"
