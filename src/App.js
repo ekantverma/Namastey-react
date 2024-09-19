@@ -16,6 +16,7 @@ import Login from "./components/Login";
 import Footer from "./components/Footer";
 import Shimmer from './components/Shimmer';
 import Search from "./components/Search";
+import MindsRestraurants from './components/MindsRestraurants';
 
 
 const AppLayout = () => {
@@ -92,6 +93,11 @@ const appRouter = createBrowserRouter([
       {
         path: "/search",
         element:<Search/>
+      },
+      {
+        path: "/collections/:collectionId",
+        element: <MindsRestraurants />,
+        exact: true,
       }
     ],
     errorElement: <Error/>

@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import { Link } from "react-router-dom"; // Import Link
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -11,7 +12,6 @@ const CarouselMinds = ({ cardsData }) => {
   const mainSliderRef = useRef(null); // Ref for the main slider
   const [mindsTitle, setMindsTitle] = useState("");
 
-  // Use Effect Hooks
   useEffect(() => {
     const loadMindsData = async () => {
       const json = await fetchData(); // Call the external fetchData utility
@@ -61,58 +61,32 @@ const CarouselMinds = ({ cardsData }) => {
     ],
   };
 
-  const handlePrevClick = () => {
-    if (mainSliderRef.current) {
-      mainSliderRef.current.slickPrev();
-    }
-  };
-
-  const handleNextClick = () => {
-    if (mainSliderRef.current) {
-      mainSliderRef.current.slickNext();
-    }
-  };
-
   return listofMinds.length === 0 ? (
     <MindsShimmer />
   ) : (
     <div className="relative w-[80%] mx-auto mt-1 mb-2 cursor-pointer">
-      {/* Title and Navigation Buttons Container */}
       <div className="flex items-center justify-between mb-4">
         <h2 className="font-bold text-lg md:text-2xl text-gray-800">
           {mindsTitle}
         </h2>
-        {/* Navigation Buttons */}
-        <div className="flex space-x-4">
-          <button
-            className="bg-gray-200 text-white p-2 rounded-3xl shadow-lg hover:bg-gray-700 transition duration-300"
-            onClick={handlePrevClick}
-          >
-            ⬅
-          </button>
-          <button
-            className="bg-gray-200 text-white p-2 rounded-3xl shadow-lg hover:bg-gray-700 transition duration-300"
-            onClick={handleNextClick}
-          >
-            ➡
-          </button>
-        </div>
       </div>
 
       {/* Main Carousel */}
       <Slider {...mainSliderSettings} ref={mainSliderRef} className="pt-4">
         {listofMinds.map((card, index) => (
-          <div key={index} className="p-2">
-            <div className="w-[144px] bg-white rounded-lg overflow-hidden text-center cursor-pointer">
-              <div className="w-full h-[180px] flex items-center justify-center">
-                <img
-                  className="w-[144px] h-[180] object-cover"
-                  alt={card.name}
-                  src={CDN_URL + card.imageId}
-                />
+          <Link to={`/collections/${card.id}`} key={index}>
+            <div key={index} className="p-2">
+              <div className="w-[144px] bg-white rounded-lg overflow-hidden text-center cursor-pointer">
+                <div className="w-full h-[180px] flex items-center justify-center">
+                  <img
+                    className="w-[144px] h-[180px] object-cover"
+                    alt={card.name}
+                    src={CDN_URL + card.imageId}
+                  />
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </Slider>
     </div>
