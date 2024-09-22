@@ -7,7 +7,7 @@
 // import "./Header.css"; // Import custom CSS for animations
 
 // const Header = () => {
-//   const { loggedInUser, setUserInformation } = useContext(UserContext);
+  // const { loggedInUser, setUserInformation } = useContext(UserContext);
 //   const onlineStatus = useOnlineStatus();
 //   const cartItems = useSelector((store) => store.cart.items);
 //   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -96,14 +96,14 @@
 //                 🛒({cartItems.length} items)
 //               </Link>
 //             </li>
-//             <li className="nav-item">
-//               <button className="login-button" onClick={handleLoginLogout}>
-//                 {loggedInUser ? "Logout" : "Login"}
-//               </button>
-//             </li>
-//             {loggedInUser && (
-//               <li className="nav-item">Welcome, {loggedInUser}</li>
-//             )}
+            // <li className="nav-item">
+            //   <button className="login-button" onClick={handleLoginLogout}>
+            //     {loggedInUser ? "Logout" : "Login"}
+            //   </button>
+            // </li>
+            // {loggedInUser && (
+            //   <li className="nav-item">Welcome, {loggedInUser}</li>
+            // )}
 //           </ul>
 //         </nav>
 //       </div>
@@ -324,8 +324,9 @@
 
 
 
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import UserContext from "../utils/userContext";
 import { useSelector } from "react-redux";
 import Logo from "../assets/Foodieweb_logo.png";
 import "./Header.css";
@@ -334,6 +335,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
   const onlineStatus = useOnlineStatus();
+  const { loggedInUser, setUserInformation } = useContext(UserContext);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [locationName, setLocationName] = useState("Gurgaon, Haryana, India"); // Default location name
   const [locationCoords, setLocationCoords] = useState({ latitude: null, longitude: null });
@@ -365,6 +367,14 @@ const Header = () => {
   useEffect(() => {
     setIsNavOpen(false);
   }, [location]);
+
+  const handleLoginLogout = () => {
+        if (loggedInUser) {
+          setUserInformation(null);
+        } else {
+          window.location.href = "/login";
+        }
+      };
 
   return (
     <header className="header-container bg-white shadow-md px-4">
@@ -419,14 +429,14 @@ const Header = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <button
-                className="login-button text-white font-semibold"
-                onClick={() => window.location.href = "/login"}
-              >
-                Login
+              <button className="login-button" onClick={handleLoginLogout}>
+                {loggedInUser ? "Logout" : "Login"}
               </button>
             </li>
-          </ul>
+            {loggedInUser && (
+              <li className="nav-item">Welcome, {loggedInUser}</li>
+            )}
+            </ul>
         </nav>
       </div>
     </header>

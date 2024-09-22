@@ -1,35 +1,44 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Link } from "react-router-dom"; // Import Link
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { fetchData } from "../utils/bodyApiService"; // Import fetchData utility
+import { fetchData } from "../utils/bodyApiService";
 import { CDN_URL } from "../utils/constants";
 import MindsShimmer from "./MindsShimmer";
 
-const CarouselMinds = ({ cardsData }) => {
+const CarouselMinds = () => {
   const [listofMinds, setListofMinds] = useState([]);
-  const mainSliderRef = useRef(null); // Ref for the main slider
+  const mainSliderRef = useRef(null);
   const [mindsTitle, setMindsTitle] = useState("");
 
   useEffect(() => {
     const loadMindsData = async () => {
-      const json = await fetchData(); // Call the external fetchData utility
+      const json = await fetchData();
       if (json) {
-        setListofMinds(
-          json.data.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info ||
-            []
-        );
-        setMindsTitle(json.data.cards[0]?.card?.card?.title);
-      }
-      const mindsHeader = json.data.cards[0]?.card?.card?.header?.title;
-      if (mindsHeader) {
-        setMindsTitle(mindsHeader);
-      } else {
-        setMindsTitle("Whats in your mind?");
+        const imageGridCards = json.data.cards[0]?.card?.card?.imageGridCards?.info;
+
+        if (imageGridCards && imageGridCards.length > 0) {
+          const collectionIds = imageGridCards.map((card) => {
+            const entityId = card.entityId;
+            const urlParams = new URLSearchParams(entityId.split("?")[1]);
+            return urlParams.get("collection_id");
+          }).filter((id) => id !== null);
+
+          const mindsDataWithIds = imageGridCards.map((card, index) => ({
+            ...card,
+            collectionId: collectionIds[index],
+          }));
+
+          setListofMinds(mindsDataWithIds);
+        }
+
+        const mindsHeader = json.data.cards[0]?.card?.card?.header?.title;
+        setMindsTitle(mindsHeader || "What's on your mind?");
       }
     };
-    loadMindsData(); // Call the async function
+
+    loadMindsData();
   }, []);
 
   const mainSliderSettings = {
@@ -38,27 +47,20 @@ const CarouselMinds = ({ cardsData }) => {
     speed: 400,
     slidesToShow: 5.5,
     slidesToScroll: 3,
-    arrows: false, // Disable default arrows
+    arrows: true,
     responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
+      { breakpoint: 1024, settings: { slidesToShow: 3 } },
+      { breakpoint: 600, settings: { slidesToShow: 2 } },
+      { breakpoint: 480, settings: { slidesToShow: 1 } },
     ],
+  };
+
+  const handlePrevClick = () => {
+    mainSliderRef.current && mainSliderRef.current.slickPrev();
+  };
+
+  const handleNextClick = () => {
+    mainSliderRef.current && mainSliderRef.current.slickNext();
   };
 
   return listofMinds.length === 0 ? (
@@ -69,19 +71,32 @@ const CarouselMinds = ({ cardsData }) => {
         <h2 className="font-bold text-lg md:text-2xl text-gray-800">
           {mindsTitle}
         </h2>
+        <div className="flex space-x-4">
+          <button
+            className="bg-gray-200 text-gray-800 p-2 rounded-full shadow-lg"
+            onClick={handlePrevClick}
+          >
+            ⬅
+          </button>
+          <button
+            className="bg-gray-200 text-gray-800 p-2 rounded-full shadow-lg"
+            onClick={handleNextClick}
+          >
+            ➡
+          </button>
+        </div>
       </div>
 
-      {/* Main Carousel */}
       <Slider {...mainSliderSettings} ref={mainSliderRef} className="pt-4">
         {listofMinds.map((card, index) => (
-          <Link to={`/collections/${card.id}`} key={index}>
-            <div key={index} className="p-2">
+          <Link to={`/collections/${card.collectionId}`} key={card.collectionId}>
+            <div className="p-2">
               <div className="w-[144px] bg-white rounded-lg overflow-hidden text-center cursor-pointer">
                 <div className="w-full h-[180px] flex items-center justify-center">
                   <img
                     className="w-[144px] h-[180px] object-cover"
                     alt={card.name}
-                    src={CDN_URL + card.imageId}
+                    src={`${CDN_URL}${card.imageId}`}
                   />
                 </div>
               </div>
