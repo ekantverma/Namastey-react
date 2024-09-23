@@ -120,7 +120,7 @@ const Carousel = () => {
                   </h3>
                   <div className="flex justify-between text-md font-bold text-gray-600 mb-1 items-center">
                     <span>
-                      <span className="text-green-800 text-xl">✪ </span>
+                      <span className="text-green-600 text-xl">✪ </span>
                       {card.info.avgRating} Stars
                     </span>
                     <span>

@@ -123,7 +123,7 @@ const Cart = () => {
               </div>
               <button
                 className="bg-green-600 text-white py-2 px-6 rounded-lg shadow-md hover:bg-green-500 transition duration-300 mt-4"
-                onClick={() => alert('Proceeding to payment...')}
+                onClick={() => alert('Apke pass enough amount nhi hai bhai 😂, So sorry...')}
               >
                 Pay
               </button>
