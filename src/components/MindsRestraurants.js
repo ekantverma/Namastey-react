@@ -48,6 +48,7 @@ const MindsRestaurants = () => {
     loadRestaurants();
   }, [collectionId]); // Dependency on collectionId so it re-fetches data when it changes
 
+
   if (loading) {
     return <Shimmer />;
   }
